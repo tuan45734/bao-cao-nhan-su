@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo cáo biến động nhân sự | Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="dashboard-container">
+    <div class="header">
+        <h1><i class="fas fa-chart-line"></i> Biến động nhân sự | Dashboard</h1>
+        <p>Phân tích theo tuần, tháng, quý, năm - Dữ liệu tuyển dụng & nghỉ việc tổng quan và theo chức danh</p>
+    </div>
+
+    <div class="filter-bar">
+        <div class="time-group">
+            <button class="time-btn" data-period="week"><i class="far fa-calendar-week"></i> Theo tuần</button>
+            <button class="time-btn active" data-period="month"><i class="far fa-calendar-alt"></i> Theo tháng</button>
+            <button class="time-btn" data-period="quarter"><i class="fas fa-chart-line"></i> Theo quý</button>
+            <button class="time-btn" data-period="year"><i class="far fa-calendar-check"></i> Theo năm</button>
+        </div>
+        
+        <div class="area-filter">
+            <select id="kvFilter" class="filter-select">
+                <option value="all">🌍 Tất cả khu vực</option>
+                <option value="KV1">🏢 KV1</option>
+                <option value="KV2">🏢 KV2</option>
+                <option value="KV3">🏢 KV3</option>
+                <option value="KV4">🏢 KV4</option>
+                <option value="KV5">🏢 KV5</option>
+                <option value="KV6">🏢 KV6</option>
+                <option value="KV7">🏢 KV7</option>
+            </select>
+            
+            <select id="nhomFilter" class="filter-select" style="display: none;">
+                <option value="all">📁 Tất cả nhóm</option>
+            </select>
+            
+            <select id="nppFilter" class="filter-select" style="display: none;">
+                <option value="all">📊 Tất cả NPP</option>
+            </select>
+        </div>
+        
+        <!-- Bộ chọn tháng (chỉ hiện khi chọn theo tuần) -->
+        <div class="month-selector" id="monthSelector" style="display: none;">
+            <label><i class="fas fa-calendar-month"></i> Chọn tháng: </label>
+            <select id="monthSelect">
+                <option value="">-- Chọn tháng --</option>
+            </select>
+        </div>
+        
+        <div class="stats-summary" id="summaryStats">
+            <div class="stat-badge"><i class="fas fa-user-check"></i> Đang làm: <span id="workingCount" class="stat-number">0</span></div>
+            <div class="stat-badge"><i class="fas fa-user-plus"></i> Tổng tuyển: <span id="totalHired" class="stat-number">0</span></div>
+            <div class="stat-badge"><i class="fas fa-user-minus"></i> Tổng nghỉ: <span id="totalLeft" class="stat-number">0</span></div>
+            <div class="stat-badge"><i class="fas fa-users"></i> Chênh lệch: <span id="netChange" class="stat-number">0</span></div>
+        </div>
+    </div>
+
+    <!-- 2 biểu đồ cũ: Tổng quan -->
+    <div class="grid-2">
+        <div class="card">
+            <div class="card-header">
+                <h3><i class="fas fa-chart-bar"></i> Diễn biến nhân sự tổng quan</h3>
+            </div>
+            <canvas id="hrFluctuationChart"></canvas>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3><i class="fas fa-chart-pie"></i> Tỷ lệ biến động tổng quan</h3>
+            </div>
+            <canvas id="pieTurnoverChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Bảng chi tiết biến động tổng quan -->
+    <div class="card">
+        <div class="card-header">
+            <h3><i class="fas fa-table-list"></i> Bảng chi tiết biến động tổng quan <span id="periodLabel">(Theo tháng)</span></h3>
+        </div>
+        <div class="table-wrapper">
+            <table class="data-table" id="detailTable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Kỳ</th>
+                        <th>Tuyển mới</th>
+                        <th>Nghỉ việc</th>
+                        <th>Biến động ròng</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <tr><td colspan="5">Đang tải...</tr</tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 3 biểu đồ theo chức danh -->
+    <h2 class="section-title"><i class="fas fa-user-tag"></i> Phân tích theo chức danh</h2>
+    
+    <!-- Biểu đồ ASM -->
+    <div class="card">
+        <div class="card-header">
+            <h3><i class="fas fa-chart-line"></i> ASM (Quản lý vùng)</h3>
+            <div class="stats-mini">
+                <span class="stat-mini"><i class="fas fa-user-check"></i> Đang làm: <span id="ASM_working">0</span></span>
+                <span class="stat-mini"><i class="fas fa-user-plus"></i> Tuyển: <span id="ASM_totalHired">0</span></span>
+                <span class="stat-mini"><i class="fas fa-user-minus"></i> Nghỉ: <span id="ASM_totalLeft">0</span></span>
+                <span class="stat-mini"><i class="fas fa-chart-line"></i> Biến động: <span id="ASM_netChange">0</span></span>
+            </div>
+        </div>
+        <canvas id="chart_ASM" height="200"></canvas>
+    </div>
+
+    <!-- Biểu đồ GS -->
+    <div class="card">
+        <div class="card-header">
+            <h3><i class="fas fa-chart-line"></i> GS (Giám sát)</h3>
+            <div class="stats-mini">
+                <span class="stat-mini"><i class="fas fa-user-check"></i> Đang làm: <span id="GS_working">0</span></span>
+                <span class="stat-mini"><i class="fas fa-user-plus"></i> Tuyển: <span id="GS_totalHired">0</span></span>
+                <span class="stat-mini"><i class="fas fa-user-minus"></i> Nghỉ: <span id="GS_totalLeft">0</span></span>
+                <span class="stat-mini"><i class="fas fa-chart-line"></i> Biến động: <span id="GS_netChange">0</span></span>
+            </div>
+        </div>
+        <canvas id="chart_GS" height="200"></canvas>
+    </div>
+
+    <!-- Biểu đồ NV -->
+    <div class="card">
+        <div class="card-header">
+            <h3><i class="fas fa-chart-line"></i> NV (Nhân viên)</h3>
+            <div class="stats-mini">
+                <span class="stat-mini"><i class="fas fa-user-check"></i> Đang làm: <span id="NV_working">0</span></span>
+                <span class="stat-mini"><i class="fas fa-user-plus"></i> Tuyển: <span id="NV_totalHired">0</span></span>
+                <span class="stat-mini"><i class="fas fa-user-minus"></i> Nghỉ: <span id="NV_totalLeft">0</span></span>
+                <span class="stat-mini"><i class="fas fa-chart-line"></i> Biến động: <span id="NV_netChange">0</span></span>
+            </div>
+        </div>
+        <canvas id="chart_NV" height="200"></canvas>
+    </div>
+
+    <div class="footer-note">
+        <i class="far fa-clock"></i> Báo cáo phân tích biến động nhân sự tổng quan và theo chức danh | So sánh tuần/tháng/quý/năm
+    </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
