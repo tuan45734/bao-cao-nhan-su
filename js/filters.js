@@ -49,6 +49,7 @@ function getNhomByKV(kv) {
     const nhomSet = new Set();
     rawData.forEach(emp => {
         if (!includeMien(emp)) return;
+        if (!isEmployeeAccessible(emp)) return;
         if (kv === 'all' || emp.khu_vuc === kv) {
             if (emp.nhom && emp.nhom !== "") {
                 nhomSet.add(emp.nhom);
@@ -63,6 +64,7 @@ function getNPPByNhomAndKV(nhom, kv) {
     const nppSet = new Set();
     rawData.forEach(emp => {
         if (!includeMien(emp)) return;
+        if (!isEmployeeAccessible(emp)) return;
         const includeKV = (kv === 'all' || emp.khu_vuc === kv);
         const includeNhom = (nhom === 'all' || emp.nhom === nhom);
         if (includeKV && includeNhom && emp.npp && emp.npp !== "") {
@@ -110,6 +112,8 @@ function filterDataByArea(role = null) {
     let filteredJoin = [], filteredLeave = [];
     rawData.forEach(emp => {
         if (!includeMien(emp)) return;
+        // Kiểm tra quyền truy cập
+        if (!isEmployeeAccessible(emp)) return;
         const includeKhuVuc = (currentKhuVucFilter === 'all' || emp.khu_vuc === currentKhuVucFilter);
         const includeNhom = (currentNhomFilter === 'all' || emp.nhom === currentNhomFilter);
         const includeNpp = (currentNppFilter === 'all' || emp.npp === currentNppFilter);
@@ -133,6 +137,7 @@ function getCurrentWorkingCount(role = null) {
     let workingCount = 0;
     rawData.forEach(emp => {
         if (!includeMien(emp)) return;
+        if (!isEmployeeAccessible(emp)) return;
         const includeKhuVuc = (currentKhuVucFilter === 'all' || emp.khu_vuc === currentKhuVucFilter);
         const includeNhom = (currentNhomFilter === 'all' || emp.nhom === currentNhomFilter);
         const includeNpp = (currentNppFilter === 'all' || emp.npp === currentNppFilter);

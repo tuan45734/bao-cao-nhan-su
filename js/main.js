@@ -130,12 +130,6 @@ function setupEventListeners() {
             currentKhuVucFilter = e.target.value;
             updateNhomDropdown();
             updateNPPDropdown();
-            
-            const nhomSelect = document.getElementById('nhomFilter');
-            const nppSelect = document.getElementById('nppFilter');
-            if (nhomSelect) nhomSelect.style.display = currentKhuVucFilter !== 'all' ? 'inline-block' : 'none';
-            if (nppSelect) nppSelect.style.display = 'none';
-            
             renderWithCurrentPeriod();
         });
     }
@@ -146,10 +140,6 @@ function setupEventListeners() {
         nhomFilter.addEventListener('change', (e) => {
             currentNhomFilter = e.target.value;
             updateNPPDropdown();
-            
-            const nppSelect = document.getElementById('nppFilter');
-            if (nppSelect) nppSelect.style.display = currentNhomFilter !== 'all' ? 'inline-block' : 'none';
-            
             renderWithCurrentPeriod();
         });
     }
@@ -175,11 +165,105 @@ function setupEventListeners() {
     }
 }
 
-// Khởi tạo khi trang load
-document.addEventListener('DOMContentLoaded', () => {
+// Xử lý đăng nhập
+function handleLogin() {
+    const codeInput = document.getElementById('loginCode');
+    const errorEl = document.getElementById('loginError');
+    const code = codeInput.value.trim();
+    
+    if (!code) {
+        errorEl.textContent = 'Vui lòng nhập mã đăng nhập!';
+        return;
+    }
+    
+    const result = login(code);
+    if (result.success) {
+        document.getElementById('loginOverlay').classList.add('hidden');
+        document.getElementById('userBar').style.display = 'flex';
+        const displayName = result.user.role === 'ADMIN' ? 'ADMIN (Toàn quyền)' : result.user.kv;
+        document.getElementById('userDisplay').textContent = `👤 ${result.user.code} - ${displayName}`;
+        
+        // Nếu không phải ADMIN, khóa bộ lọc KV + Miền và đặt theo quyền
+        if (!isAdmin()) {
+            const kvSelect = document.getElementById('kvFilter');
+            if (kvSelect) {
+                kvSelect.value = result.user.kv;
+                kvSelect.disabled = true;
+                kvSelect.style.opacity = '0.6';
+                kvSelect.style.cursor = 'not-allowed';
+                currentKhuVucFilter = result.user.kv;
+            }
+            const mienSelect = document.getElementById('mienFilter');
+            if (mienSelect) {
+                mienSelect.disabled = true;
+                mienSelect.style.opacity = '0.6';
+                mienSelect.style.cursor = 'not-allowed';
+            }
+        }
+        
+        initDashboard();
+    } else {
+        errorEl.textContent = result.message;
+        codeInput.value = '';
+        codeInput.focus();
+    }
+}
+
+function initDashboard() {
     updateNhomDropdown();
     updateNPPDropdown();
     setupEventListeners();
     updateMonthDropdown();
     renderDashboard('month');
+}
+
+// Khởi tạo khi trang load
+document.addEventListener('DOMContentLoaded', () => {
+    // Kiểm tra đã đăng nhập chưa
+    const user = getCurrentUser();
+    if (user) {
+        document.getElementById('loginOverlay').classList.add('hidden');
+        document.getElementById('userBar').style.display = 'flex';
+        const displayName = user.role === 'ADMIN' ? 'ADMIN (Toàn quyền)' : user.kv;
+        document.getElementById('userDisplay').textContent = `👤 ${user.code} - ${displayName}`;
+        
+        // Nếu không phải ADMIN, khóa bộ lọc KV + Miền
+        if (!isAdmin()) {
+            const kvSelect = document.getElementById('kvFilter');
+            if (kvSelect) {
+                kvSelect.value = user.kv;
+                kvSelect.disabled = true;
+                kvSelect.style.opacity = '0.6';
+                kvSelect.style.cursor = 'not-allowed';
+                currentKhuVucFilter = user.kv;
+            }
+            const mienSelect = document.getElementById('mienFilter');
+            if (mienSelect) {
+                mienSelect.disabled = true;
+                mienSelect.style.opacity = '0.6';
+                mienSelect.style.cursor = 'not-allowed';
+            }
+        }
+        
+        initDashboard();
+    }
+    
+    // Sự kiện đăng nhập
+    const loginBtn = document.getElementById('loginBtn');
+    if (loginBtn) {
+        loginBtn.addEventListener('click', handleLogin);
+    }
+    
+    const loginCode = document.getElementById('loginCode');
+    if (loginCode) {
+        loginCode.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') handleLogin();
+        });
+    }
+    
+    // Sự kiện đăng xuất
+    const logoutBtn = document.getElementById('logoutBtn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', logout);
+    }
 });

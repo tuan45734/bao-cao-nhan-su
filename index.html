@@ -9,6 +9,33 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<!-- Login Overlay -->
+<div class="login-overlay" id="loginOverlay">
+    <div class="login-card">
+        <div class="login-icon"><i class="fas fa-user-lock"></i></div>
+        <h2>Đăng nhập</h2>
+        <p class="login-desc">Nhập mã đăng nhập để xem báo cáo</p>
+        <div class="login-input-group">
+            <i class="fas fa-key"></i>
+            <input type="text" id="loginCode" placeholder="Nhập mã đăng nhập..." autocomplete="off">
+        </div>
+        <button class="login-btn" id="loginBtn"><i class="fas fa-sign-in-alt"></i> Đăng nhập</button>
+        <p class="login-error" id="loginError"></p>
+        
+    </div>
+</div>
+
+<!-- User bar -->
+<div class="user-bar" id="userBar" style="display: none;">
+    <div class="user-bar-left">
+        <i class="fas fa-user-circle"></i>
+        <span id="userDisplay">Đã đăng nhập</span>
+    </div>
+    <div class="user-bar-right">
+        <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Đăng xuất</button>
+    </div>
+</div>
+
 <div class="dashboard-container">
     <div class="header">
         <h1><i class="fas fa-chart-line"></i> Biến động nhân sự | Dashboard</h1>
@@ -42,11 +69,11 @@
                 <option value="KV7">🏢 KV7</option>
             </select>
             
-            <select id="nhomFilter" class="filter-select" style="display: none;">
+            <select id="nhomFilter" class="filter-select">
                 <option value="all">📁 Tất cả nhóm</option>
             </select>
             
-            <select id="nppFilter" class="filter-select" style="display: none;">
+            <select id="nppFilter" class="filter-select">
                 <option value="all">📊 Tất cả NPP</option>
             </select>
         </div>
@@ -150,6 +177,7 @@
     </div>
 </div>
 
+<script src="js/auth.js"></script>
 <script src="js/data.js"></script>
 <script src="js/utils.js"></script>
 <script src="js/filters.js"></script>
