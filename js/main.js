@@ -68,6 +68,18 @@ function renderDashboard(period, filterValue = null) {
     });
 }
 
+function renderWithCurrentPeriod() {
+    if (currentPeriod === 'week') {
+        renderDashboard(currentPeriod, currentSelectedMonth);
+    } else if (currentPeriod === 'month') {
+        renderDashboard(currentPeriod, null);
+    } else if (currentPeriod === 'quarter') {
+        renderDashboard(currentPeriod, 'all');
+    } else {
+        renderDashboard(currentPeriod, null);
+    }
+}
+
 function setupEventListeners() {
     // Sự kiện cho nút thời gian
     const timeBtns = document.querySelectorAll('.time-btn');
@@ -83,15 +95,33 @@ function setupEventListeners() {
             if (currentPeriod === 'week') {
                 updateMonthDropdown();
                 renderDashboard(currentPeriod, currentSelectedMonth);
-            } else if (currentPeriod === 'month') {
-                renderDashboard(currentPeriod, null);
-            } else if (currentPeriod === 'quarter') {
-                renderDashboard(currentPeriod, 'all');
             } else {
-                renderDashboard(currentPeriod, null);
+                renderWithCurrentPeriod();
             }
         });
     });
+    
+    // Sự kiện cho bộ lọc miền
+    const mienFilter = document.getElementById('mienFilter');
+    if (mienFilter) {
+        mienFilter.addEventListener('change', (e) => {
+            currentMienFilter = e.target.value;
+            
+            // Cập nhật dropdown Khu vực theo miền
+            updateKVDropdown();
+            
+            // Reset nhóm và NPP
+            updateNhomDropdown();
+            updateNPPDropdown();
+            
+            const nhomSelect = document.getElementById('nhomFilter');
+            const nppSelect = document.getElementById('nppFilter');
+            if (nhomSelect) nhomSelect.style.display = 'none';
+            if (nppSelect) nppSelect.style.display = 'none';
+            
+            renderWithCurrentPeriod();
+        });
+    }
     
     // Sự kiện cho bộ lọc khu vực
     const kvFilter = document.getElementById('kvFilter');
@@ -106,15 +136,7 @@ function setupEventListeners() {
             if (nhomSelect) nhomSelect.style.display = currentKhuVucFilter !== 'all' ? 'inline-block' : 'none';
             if (nppSelect) nppSelect.style.display = 'none';
             
-            if (currentPeriod === 'week') {
-                renderDashboard(currentPeriod, currentSelectedMonth);
-            } else if (currentPeriod === 'month') {
-                renderDashboard(currentPeriod, null);
-            } else if (currentPeriod === 'quarter') {
-                renderDashboard(currentPeriod, 'all');
-            } else {
-                renderDashboard(currentPeriod, null);
-            }
+            renderWithCurrentPeriod();
         });
     }
     
@@ -128,15 +150,7 @@ function setupEventListeners() {
             const nppSelect = document.getElementById('nppFilter');
             if (nppSelect) nppSelect.style.display = currentNhomFilter !== 'all' ? 'inline-block' : 'none';
             
-            if (currentPeriod === 'week') {
-                renderDashboard(currentPeriod, currentSelectedMonth);
-            } else if (currentPeriod === 'month') {
-                renderDashboard(currentPeriod, null);
-            } else if (currentPeriod === 'quarter') {
-                renderDashboard(currentPeriod, 'all');
-            } else {
-                renderDashboard(currentPeriod, null);
-            }
+            renderWithCurrentPeriod();
         });
     }
     
@@ -145,15 +159,7 @@ function setupEventListeners() {
     if (nppFilter) {
         nppFilter.addEventListener('change', (e) => {
             currentNppFilter = e.target.value;
-            if (currentPeriod === 'week') {
-                renderDashboard(currentPeriod, currentSelectedMonth);
-            } else if (currentPeriod === 'month') {
-                renderDashboard(currentPeriod, null);
-            } else if (currentPeriod === 'quarter') {
-                renderDashboard(currentPeriod, 'all');
-            } else {
-                renderDashboard(currentPeriod, null);
-            }
+            renderWithCurrentPeriod();
         });
     }
     

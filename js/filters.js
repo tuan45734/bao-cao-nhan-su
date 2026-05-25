@@ -1,13 +1,54 @@
 // filters.js - Quản lý bộ lọc
 
+let currentMienFilter = 'all';
 let currentKhuVucFilter = 'all';
 let currentNhomFilter = 'all';
 let currentNppFilter = 'all';
 
-// Lấy danh sách nhóm theo khu vực
+// Mapping KV -> Miền
+function getMienFromKV(kv) {
+    const num = parseInt(kv.replace('KV', ''));
+    if (num >= 1 && num <= 6) return 'bac';
+    if (num === 7) return 'trung';
+    return 'nam';
+}
+
+// Lấy danh sách KV thuộc một miền
+function getKVListByMien(mien) {
+    if (mien === 'all') return ['KV1','KV2','KV3','KV4','KV5','KV6','KV7'];
+    const allKV = ['KV1','KV2','KV3','KV4','KV5','KV6','KV7'];
+    return allKV.filter(kv => getMienFromKV(kv) === mien);
+}
+
+// Kiểm tra xem employee có thuộc miền đang chọn không
+function includeMien(emp) {
+    if (currentMienFilter === 'all') return true;
+    return getMienFromKV(emp.khu_vuc) === currentMienFilter;
+}
+
+// Cập nhật dropdown Khu vực theo Miền
+function updateKVDropdown() {
+    const kvSelect = document.getElementById('kvFilter');
+    if (!kvSelect) return;
+
+    const kvList = getKVListByMien(currentMienFilter);
+    kvSelect.innerHTML = '<option value="all">🌍 Tất cả khu vực</option>';
+    kvList.forEach(kv => {
+        const option = document.createElement('option');
+        option.value = kv;
+        option.textContent = '🏢 ' + kv;
+        kvSelect.appendChild(option);
+    });
+
+    currentKhuVucFilter = 'all';
+    kvSelect.value = 'all';
+}
+
+// Lấy danh sách nhóm theo khu vực (có tính miền)
 function getNhomByKV(kv) {
     const nhomSet = new Set();
     rawData.forEach(emp => {
+        if (!includeMien(emp)) return;
         if (kv === 'all' || emp.khu_vuc === kv) {
             if (emp.nhom && emp.nhom !== "") {
                 nhomSet.add(emp.nhom);
@@ -17,10 +58,11 @@ function getNhomByKV(kv) {
     return Array.from(nhomSet).sort();
 }
 
-// Lấy danh sách NPP theo nhóm và khu vực
+// Lấy danh sách NPP theo nhóm và khu vực (có tính miền)
 function getNPPByNhomAndKV(nhom, kv) {
     const nppSet = new Set();
     rawData.forEach(emp => {
+        if (!includeMien(emp)) return;
         const includeKV = (kv === 'all' || emp.khu_vuc === kv);
         const includeNhom = (nhom === 'all' || emp.nhom === nhom);
         if (includeKV && includeNhom && emp.npp && emp.npp !== "") {
@@ -67,6 +109,7 @@ function updateNPPDropdown() {
 function filterDataByArea(role = null) {
     let filteredJoin = [], filteredLeave = [];
     rawData.forEach(emp => {
+        if (!includeMien(emp)) return;
         const includeKhuVuc = (currentKhuVucFilter === 'all' || emp.khu_vuc === currentKhuVucFilter);
         const includeNhom = (currentNhomFilter === 'all' || emp.nhom === currentNhomFilter);
         const includeNpp = (currentNppFilter === 'all' || emp.npp === currentNppFilter);
@@ -89,6 +132,7 @@ function filterDataByArea(role = null) {
 function getCurrentWorkingCount(role = null) {
     let workingCount = 0;
     rawData.forEach(emp => {
+        if (!includeMien(emp)) return;
         const includeKhuVuc = (currentKhuVucFilter === 'all' || emp.khu_vuc === currentKhuVucFilter);
         const includeNhom = (currentNhomFilter === 'all' || emp.nhom === currentNhomFilter);
         const includeNpp = (currentNppFilter === 'all' || emp.npp === currentNppFilter);
