@@ -178,8 +178,13 @@ const rawData = [
  {   "khu_vuc": "KV3",   "nhom": "Cầu Giấy - Từ Liêm",   "npp": "NPP Tân Hoa",   "chuc_danh": "GS",   "ma_nv": "PP959",   "ten_nv": "Phan Chu Chinh",   "ngay_vao_1": "28/4/2026",   "ngay_vao_2": "",   "ngay_ra_1": "",   "ngay_ra_2": "" },
  {   "khu_vuc": "KV3",   "nhom": "Cầu Giấy - Từ Liêm",   "npp": "NPP Tân Hoa",   "chuc_danh": "NV",   "ma_nv": "PP620",   "ten_nv": "Nguyễn Văn Nghĩa",   "ngay_vao_1": "23/10/2025",   "ngay_vao_2": "",   "ngay_ra_1": "",   "ngay_ra_2": "" },
  {   "khu_vuc": "KV3",   "nhom": "Cầu Giấy - Từ Liêm",   "npp": "NPP Tân Hoa",   "chuc_danh": "NV",   "ma_nv": "PP916",   "ten_nv": "Nguyễn Công Nghĩa",   "ngay_vao_1": "07/04/2026",   "ngay_vao_2": "",   "ngay_ra_1": "30/04/2026",   "ngay_ra_2": "" },
+<<<<<<< HEAD
  {   "khu_vuc": "KV3",   "nhom": "Cầu Giấy - Từ Liêm",   "npp": "NPP Tân Hoa",   "chuc_danh": "NV",   "ma_nv": "PP112",   "ten_nv": "Nguyễn Xuân Hiểu",   "ngay_vao_1": "15/04/2025",   "ngay_vao_2": "",   "ngay_ra_1": "",   "ngay_ra_2": "" },
  {   "khu_vuc": "KV3",   "nhom": "Cầu Giấy - Từ Liêm",   "npp": "NPP Tân Hoa",   "chuc_danh": "NV",   "ma_nv": "PP1021",   "ten_nv": "Phạm Quỳnh Trang",   "ngay_vao_1": "18/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "21/05/2026",   "ngay_ra_2": "" },
+=======
+ {   "khu_vuc": "KV3",   "nhom": "Cầu Giấy - Từ Liêm",   "npp": "NPP Tân Hoa",   "chuc_danh": "NV",   "ma_nv": "PP112",   "ten_nv": "Nguyễn Xuân Hiểu",   "ngay_vao_1": "15/04/2025",   "ngay_vao_2": "",   "ngay_ra_1": "19/05/2026",   "ngay_ra_2": "" },
+ {   "khu_vuc": "KV3",   "nhom": "Cầu Giấy - Từ Liêm",   "npp": "NPP Tân Hoa",   "chuc_danh": "NV",   "ma_nv": "PP1021",   "ten_nv": "Phạm Quỳnh Trang",   "ngay_vao_1": "18/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "",   "ngay_ra_2": "" },
+>>>>>>> d1d4c61cc6d7cc876f34b45a0a3089a79fa07d8f
  {   "khu_vuc": "KV3",   "nhom": "Cầu Giấy - Từ Liêm",   "npp": "NPP Tân Hoa",   "chuc_danh": "NV",   "ma_nv": "PP114",   "ten_nv": "Vũ Đức Thịnh",   "ngay_vao_1": "15/04/2025",   "ngay_vao_2": "04/05/2026",   "ngay_ra_1": "28/02/2026",   "ngay_ra_2": "" },
  {   "khu_vuc": "KV3",   "nhom": "Cầu Giấy - Từ Liêm",   "npp": "NPP Tân Hoa",   "chuc_danh": "NV",   "ma_nv": "PP783",   "ten_nv": "Đỗ Thị Nhài",   "ngay_vao_1": "01/02/2026",   "ngay_vao_2": "",   "ngay_ra_1": "09/02/2026",   "ngay_ra_2": "" },
  {   "khu_vuc": "KV3",   "nhom": "Cầu Giấy - Từ Liêm",   "npp": "NPP Tân Hoa",   "chuc_danh": "NV",   "ma_nv": "PP1021",   "ten_nv": "Phạm Quỳnh Trang",   "ngay_vao_1": "18/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "20/05/2026",   "ngay_ra_2": "" },
@@ -542,15 +547,22 @@ const rawData = [
  {   "khu_vuc": "KV7",   "nhom": "Bình Định",   "npp": "NPP Hiền Thuận",   "chuc_danh": "GS",   "ma_nv": "PP1022",   "ten_nv": "Võ Anh Mạnh Quân",   "ngay_vao_1": "15/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "",   "ngay_ra_2": "" },
  {   "khu_vuc": "KV7",   "nhom": "Bình Định",   "npp": "NPP Hiền Thuận",   "chuc_danh": "NV",   "ma_nv": "PP1023",   "ten_nv": "Đặng Tuấn Anh",   "ngay_vao_1": "16/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "",   "ngay_ra_2": "" },
  {   "khu_vuc": "KV7",   "nhom": "Bình Định",   "npp": "NPP Hiền Thuận",   "chuc_danh": "NV",   "ma_nv": "PP1024",   "ten_nv": "Trần Anh Quân",   "ngay_vao_1": "16/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "",   "ngay_ra_2": "" },
+<<<<<<< HEAD
  {   "khu_vuc": "KV7",   "nhom": "Bình Định",   "npp": "NPP Hiền Thuận",   "chuc_danh": "NV",   "ma_nv": "",   "ten_nv": "Võ Văn Nghĩa",   "ngay_vao_1": "20/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "",   "ngay_ra_2": "" },
  {   "khu_vuc": "KV7",   "nhom": "Bình Định",   "npp": "NPP Hiền Thuận",   "chuc_danh": "NV",   "ma_nv": "",   "ten_nv": "Nguyễn Thị Huỳnh Ngân",   "ngay_vao_1": "20/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "21/05/2026",   "ngay_ra_2": "" },
+=======
+>>>>>>> d1d4c61cc6d7cc876f34b45a0a3089a79fa07d8f
  {   "khu_vuc": "KV7",   "nhom": "Đà Nẵng",   "npp": "NPP NAKOA",   "chuc_danh": "GS",   "ma_nv": "PP987",   "ten_nv": "Phạm Quốc Long",   "ngay_vao_1": "06/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "",   "ngay_ra_2": "" },
  {   "khu_vuc": "KV7",   "nhom": "Đà Nẵng",   "npp": "NPP NAKOA",   "chuc_danh": "NV",   "ma_nv": "PP988",   "ten_nv": "Lê Thị Thúy Nga",   "ngay_vao_1": "08/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "",   "ngay_ra_2": "" },
  {   "khu_vuc": "KV7",   "nhom": "Đà Nẵng",   "npp": "NPP NAKOA",   "chuc_danh": "NV",   "ma_nv": "PP989",   "ten_nv": "Trương Bảo Phước",   "ngay_vao_1": "08/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "",   "ngay_ra_2": "" },
  {   "khu_vuc": "KV7",   "nhom": "Đà Nẵng",   "npp": "NPP NAKOA",   "chuc_danh": "NV",   "ma_nv": "PP990",   "ten_nv": "Văn Thị Cẩm Thi",   "ngay_vao_1": "08/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "",   "ngay_ra_2": "" },
+<<<<<<< HEAD
  {   "khu_vuc": "KV7",   "nhom": "Đà Nẵng",   "npp": "NPP NAKOA",   "chuc_danh": "NV",   "ma_nv": "",   "ten_nv": "Quách Thị Hồng",   "ngay_vao_1": "22/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "",   "ngay_ra_2": "" },
  {   "khu_vuc": "KV7",   "nhom": "Đắk Lắk",   "npp": "NPP Hoàng Gia Bảo",   "chuc_danh": "GS",   "ma_nv": "PP980",   "ten_nv": "Diệp Thế Hoàng",   "ngay_vao_1": "04/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "19/05/2026",   "ngay_ra_2": "" },
  {   "khu_vuc": "KV7",   "nhom": "Đắk Lắk",   "npp": "NPP Hoàng Gia Bảo",   "chuc_danh": "GS",   "ma_nv": "",   "ten_nv": "Bùi Quốc Lợi",   "ngay_vao_1": "25/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "",   "ngay_ra_2": "" },
+=======
+ {   "khu_vuc": "KV7",   "nhom": "Đắk Lắk",   "npp": "NPP Hoàng Gia Bảo",   "chuc_danh": "GS",   "ma_nv": "PP980",   "ten_nv": "Diệp Thế Hoàng",   "ngay_vao_1": "04/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "19/05/2026",   "ngay_ra_2": "" },
+>>>>>>> d1d4c61cc6d7cc876f34b45a0a3089a79fa07d8f
  {   "khu_vuc": "KV7",   "nhom": "Đắk Lắk",   "npp": "NPP Hoàng Gia Bảo",   "chuc_danh": "NV",   "ma_nv": "PP981",   "ten_nv": "Đặng Văn Mạnh",   "ngay_vao_1": "07/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "",   "ngay_ra_2": "" },
  {   "khu_vuc": "KV7",   "nhom": "Đắk Lắk",   "npp": "NPP Hoàng Gia Bảo",   "chuc_danh": "NV",   "ma_nv": "PP982",   "ten_nv": "Đinh Khắc Thương",   "ngay_vao_1": "07/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "16/05/2026",   "ngay_ra_2": "" },
  {   "khu_vuc": "KV7",   "nhom": "Đắk Lắk",   "npp": "NPP Hoàng Gia Bảo",   "chuc_danh": "NV",   "ma_nv": "",   "ten_nv": "Phạm Phi Thạch",   "ngay_vao_1": "20/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "",   "ngay_ra_2": "" },
@@ -566,7 +578,10 @@ const rawData = [
  {   "khu_vuc": "KV7",   "nhom": "Nam Quảng Nam",   "npp": "NPP Tường Vy",   "chuc_danh": "GS",   "ma_nv": "PP1000",   "ten_nv": "Phạm Quốc Kỳ",   "ngay_vao_1": "11/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "",   "ngay_ra_2": "" },
  {   "khu_vuc": "KV7",   "nhom": "Nam Quảng Nam",   "npp": "NPP Tường Vy",   "chuc_danh": "NV",   "ma_nv": "PP1028",   "ten_nv": "Hoàng Quốc Nam",   "ngay_vao_1": "15/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "18/05/2026",   "ngay_ra_2": "" },
  {   "khu_vuc": "KV7",   "nhom": "Nam Quảng Nam",   "npp": "NPP Tường Vy",   "chuc_danh": "NV",   "ma_nv": "PP1029",   "ten_nv": "Lương Minh Tú",   "ngay_vao_1": "15/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "",   "ngay_ra_2": "" },
+<<<<<<< HEAD
  {   "khu_vuc": "KV7",   "nhom": "Nam Quảng Nam",   "npp": "NPP Tường Vy",   "chuc_danh": "NV",   "ma_nv": "PP1029",   "ten_nv": "Trần Đình Bảo Thông",   "ngay_vao_1": "19/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "",   "ngay_ra_2": "" },
+=======
+>>>>>>> d1d4c61cc6d7cc876f34b45a0a3089a79fa07d8f
  {   "khu_vuc": "KV7",   "nhom": "Phú Yên",   "npp": "NPP Thúy Diễm",   "chuc_danh": "GS",   "ma_nv": "PP945",   "ten_nv": "Đỗ Ngọc Lâm",   "ngay_vao_1": "04/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "",   "ngay_ra_2": "" },
  {   "khu_vuc": "KV7",   "nhom": "Phú Yên",   "npp": "NPP Thúy Diễm",   "chuc_danh": "NV",   "ma_nv": "PP1001",   "ten_nv": "Nguyễn Thái Minh",   "ngay_vao_1": "12/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "",   "ngay_ra_2": "" },
  {   "khu_vuc": "KV7",   "nhom": "Phú Yên",   "npp": "NPP Thúy Diễm",   "chuc_danh": "NV",   "ma_nv": "PP1002",   "ten_nv": "Huỳnh Chí Cường",   "ngay_vao_1": "12/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "",   "ngay_ra_2": "" },
@@ -587,7 +602,10 @@ const rawData = [
  {   "khu_vuc": "KV7",   "nhom": "Quảng Ngãi",   "npp": "NPP Minh Huy",   "chuc_danh": "NV",   "ma_nv": "PP993",   "ten_nv": "Lê Thị Bích Tịnh",   "ngay_vao_1": "07/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "",   "ngay_ra_2": "" },
  {   "khu_vuc": "KV7",   "nhom": "Quảng Ngãi",   "npp": "NPP Minh Huy",   "chuc_danh": "NV",   "ma_nv": "PP994",   "ten_nv": "Trần Hưng Quang",   "ngay_vao_1": "07/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "14/05/2026",   "ngay_ra_2": "" },
  {   "khu_vuc": "KV7",   "nhom": "Quảng Ngãi",   "npp": "NPP Minh Huy",   "chuc_danh": "NV",   "ma_nv": "PP1027",   "ten_nv": "Trần Minh Truyền",   "ngay_vao_1": "15/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "",   "ngay_ra_2": "" },
+<<<<<<< HEAD
  {   "khu_vuc": "KV8",   "nhom": "Quảng Ngãi",   "npp": "NPP Minh Huy",   "chuc_danh": "NV",   "ma_nv": "",   "ten_nv": "Nguyễn Thị Hồng Vân",   "ngay_vao_1": "25/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "",   "ngay_ra_2": "" },
+=======
+>>>>>>> d1d4c61cc6d7cc876f34b45a0a3089a79fa07d8f
  {   "khu_vuc": "KV7",   "nhom": "Thừa Thiên Huế",   "npp": "NPP Tâm Bảo Hân",   "chuc_danh": "GS",   "ma_nv": "PP946",   "ten_nv": "Trần Ngọc Hải Quân",   "ngay_vao_1": "04/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "",   "ngay_ra_2": "" },
  {   "khu_vuc": "KV7",   "nhom": "Thừa Thiên Huế",   "npp": "NPP Tâm Bảo Hân",   "chuc_danh": "NV",   "ma_nv": "PP947",   "ten_nv": "Cáp Lâm Đức",   "ngay_vao_1": "04/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "",   "ngay_ra_2": "" },
  {   "khu_vuc": "KV7",   "nhom": "Thừa Thiên Huế",   "npp": "NPP Tâm Bảo Hân",   "chuc_danh": "NV",   "ma_nv": "PP995",   "ten_nv": "Bùi Thị Thảo",   "ngay_vao_1": "07/05/2026",   "ngay_vao_2": "",   "ngay_ra_1": "",   "ngay_ra_2": "" },
